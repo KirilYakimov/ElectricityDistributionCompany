@@ -1,6 +1,7 @@
 package configuration;
 
 
+import entity.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +14,8 @@ public class SessionFactoryUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             Configuration configuration = new Configuration();
+
+            configuration.addAnnotatedClass(Employee.class);
 
             ServiceRegistry serviceRegistry
                     = new StandardServiceRegistryBuilder()
