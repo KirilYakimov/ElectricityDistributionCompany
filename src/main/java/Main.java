@@ -10,8 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root =  FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
+        Parent root =  FXMLLoader.load(getClass().getResource("/view/auth/Login.fxml"));
         Scene scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

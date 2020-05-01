@@ -2,9 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2d0f881-251c-45eb-a13a-a535fc5038d5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/Index.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/view/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/configuration/SessionFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/configuration/SessionFactoryUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Main.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,16 +84,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PATH_TO_FX$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kireto\IdeaProjects\ElectricityDistributionCompany\src\main\resources\view\auth" />
       <recent name="C:\Users\Kireto\IdeaProjects\ElectricityDistributionCompany\src\main\resources\view" />
     </key>
   </component>
@@ -152,42 +172,67 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ElectricityDistributionCompany" />
+    </ignored-roots>
+  </component>
   <component name="WindowStateProjectService">
     <state x="601" y="143" key="#ElectricityDistributionCompany_[run]" timestamp="1588280999970">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="601" y="143" key="#ElectricityDistributionCompany_[run]/0.0.1920.1040@0.0.1920.1040" timestamp="1588280999970" />
-    <state x="474" y="175" key="#Project_Structure" timestamp="1588282438196">
+    <state x="474" y="175" key="#Project_Structure" timestamp="1588303278446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="474" y="175" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588282438196" />
+    <state x="474" y="175" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588303278446" />
     <state x="336" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588280865817">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588280865817" />
+    <state x="628" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1588299065841">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="628" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588299065841" />
     <state x="667" y="376" width="429" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588280671767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="376" width="429" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1588280671767" />
-    <state width="1298" height="195" key="GridCell.Tab.0.bottom" timestamp="1588284862612">
+    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588333667396">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588284862612" />
-    <state width="1298" height="195" key="GridCell.Tab.0.center" timestamp="1588284862612">
+    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588333667396" />
+    <state width="1298" height="192" key="GridCell.Tab.0.bottom" timestamp="1588363301490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="195" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588284862612" />
-    <state width="1298" height="195" key="GridCell.Tab.0.left" timestamp="1588284862612">
+    <state width="1298" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588363301490" />
+    <state width="1298" height="192" key="GridCell.Tab.0.center" timestamp="1588363301490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="195" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588284862612" />
-    <state width="1298" height="195" key="GridCell.Tab.0.right" timestamp="1588284862612">
+    <state width="1298" height="192" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588363301490" />
+    <state width="1298" height="192" key="GridCell.Tab.0.left" timestamp="1588363301490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="195" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588284862612" />
-    <state x="577" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1588279893813">
+    <state width="1298" height="192" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588363301490" />
+    <state width="1298" height="192" key="GridCell.Tab.0.right" timestamp="1588363301490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="577" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588279893813" />
+    <state width="1298" height="192" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588363301490" />
+    <state x="439" y="186" key="SettingsEditor" timestamp="1588300832857">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="439" y="186" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588300832857" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1588336601701">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1588336601701" />
+    <state x="577" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1588314782490">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="577" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588314782490" />
+    <state x="653" y="118" key="refactoring.ChangeSignatureDialog" timestamp="1588362913248">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="653" y="118" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588362913248" />
   </component>
 </project>
