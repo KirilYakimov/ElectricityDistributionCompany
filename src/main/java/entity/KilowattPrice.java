@@ -16,7 +16,8 @@ public class KilowattPrice {
     @Column(name = "changed_date")
     private LocalDate changedOnDate;
 
-    @OneToMany(mappedBy = "kilowatt_price", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "kilowattPrice", fetch = FetchType.LAZY)
     private Set<Bills> billsList;
+
 
 }

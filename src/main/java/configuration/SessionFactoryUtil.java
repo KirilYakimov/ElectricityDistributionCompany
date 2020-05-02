@@ -1,7 +1,10 @@
 package configuration;
 
 
+import entity.Bills;
+import entity.Client;
 import entity.Employee;
+import entity.KilowattPrice;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -15,7 +18,10 @@ public class SessionFactoryUtil {
         if (sessionFactory == null) {
             Configuration configuration = new Configuration();
 
-            configuration.addAnnotatedClass(Employee.class);
+            configuration.addAnnotatedClass(Employee.class)
+                    .addAnnotatedClass(Client.class)
+                    .addAnnotatedClass(Bills.class)
+                    .addAnnotatedClass(KilowattPrice.class);
 
             ServiceRegistry serviceRegistry
                     = new StandardServiceRegistryBuilder()
