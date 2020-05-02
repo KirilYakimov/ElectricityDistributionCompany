@@ -57,7 +57,6 @@ public class EmployeeController {
     private TextField salaryUpd;
     @FXML
     private DatePicker birthDateUpd;
-    //--------------DELETE-----------------//
 
     //buttons for toggle visibility of employee form//
     @FXML
@@ -65,6 +64,7 @@ public class EmployeeController {
     @FXML
     private AnchorPane addEmployeeView;
 
+    public Employee employee;
     //
     @FXML
     private void initialize() {
@@ -79,7 +79,7 @@ public class EmployeeController {
         employeeListTableView.setItems(employees);
 
     }
-    public Employee employee;
+
 
     public void saveEmployee() {
         employee = new Employee(

@@ -15,14 +15,14 @@ public class Bills {
     private long id;
 
     @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client")
     private Client client;
 
     @Column(name = "date")
     private LocalDate date;
 
     @ManyToOne (fetch = FetchType.LAZY)
-    @Column(name = "kilowatt")
+    @JoinColumn(name = "kilowatt")
     private KilowattPrice kilowattPrice;
 
     @Column(name = "electricity_consumption", nullable = false)
