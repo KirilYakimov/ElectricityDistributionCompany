@@ -30,9 +30,9 @@ public class Client {
     private ClientType type;
 
     @OneToMany(mappedBy = "client_id", fetch = FetchType.LAZY)
-    private Set<Bills> billsList;
+    private Set<Bill> billList;
 
-    public Client(){ billsList = new HashSet<Bills>();}
+    public Client(){ billList = new HashSet<Bill>();}
 
     public Client(String firstName, String lastName, String email, String address, ClientType type) {
         this.firstName = firstName;
@@ -40,7 +40,7 @@ public class Client {
         this.email = email;
         this.address = address;
         this.type = type;
-        billsList = new HashSet<Bills>();
+        billList = new HashSet<Bill>();
     }
 
     public long getId() {
@@ -91,12 +91,12 @@ public class Client {
         this.type = type;
     }
 
-    public Set<Bills> getBillsList() {
-        return billsList;
+    public Set<Bill> getBillList() {
+        return billList;
     }
 
-    public void setBillsList(Set<Bills> billsList) {
-        this.billsList = billsList;
+    public void setBillList(Set<Bill> billList) {
+        this.billList = billList;
     }
 
     @Override
@@ -108,7 +108,7 @@ public class Client {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", type=" + type +
-                ", billsList=" + billsList +
+                ", billsList=" + billList +
                 '}';
     }
 }

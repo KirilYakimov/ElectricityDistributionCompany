@@ -16,13 +16,13 @@
     <children>
         <AnchorPane layoutX="195.0" layoutY="2.0" prefHeight="500.0" prefWidth="555.0">
             <children>
-                <TableView fx:id="clientListTableView" onMouseClicked="#doubleClickUpd" prefHeight="500.0" prefWidth="555.0">
+                <TableView fx:id="clientListTableView" onMouseClicked="#doubleClickUpd" prefHeight="506.0" prefWidth="555.0">
                     <columns>
-                        <TableColumn fx:id="clientListTableViewFirstName" prefWidth="110.0" text="First name" />
-                        <TableColumn fx:id="clientListTableViewLastName" prefWidth="110.0" text="Last name" />
-                        <TableColumn fx:id="clientListTableViewEmail" prefWidth="110.0" text="Email" />
-                        <TableColumn fx:id="highestBillPaidTableView" prefWidth="110.0" text="Highest bill paid" />
-                        <TableColumn fx:id="totalPaidTableView" prefWidth="110.0" text="Total " />
+                        <TableColumn fx:id="clientListTableViewFirstName" prefWidth="110.0" resizable="false" text="First name" />
+                        <TableColumn fx:id="clientListTableViewLastName" prefWidth="110.0" resizable="false" text="Last name" />
+                        <TableColumn fx:id="clientListTableViewEmail" prefWidth="110.0" resizable="false" text="Email" />
+                        <TableColumn fx:id="highestBillPaidTableView" prefWidth="110.0" resizable="false" text="Highest bill paid" />
+                        <TableColumn fx:id="totalPaidTableView" prefWidth="110.0" resizable="false" text="Total " />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -57,10 +57,13 @@
                   <Font name="Serif Regular" size="24.0" />
                </font>
             </Label>
-            <TableView layoutX="195.0" prefHeight="506.0" prefWidth="555.0">
+            <TableView fx:id="updateTableView" layoutX="195.0" prefHeight="506.0" prefWidth="555.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn fx:id="updateBillTableViewDate" prefWidth="110.0" resizable="false" text="Date" />
+                  <TableColumn fx:id="updateBillTableViewConsumption" prefWidth="110.0" resizable="false" text="Consumption" />
+                  <TableColumn fx:id="updateBillTableViewKwPrice" prefWidth="110.0" resizable="false" text="Kw price" />
+                <TableColumn fx:id="updateBillTableViewPrice" prefWidth="110.0" resizable="false" text="Price" />
+                <TableColumn fx:id="updateBillTableViewStatus" prefWidth="110.0" resizable="false" text="Status" />
               </columns>
             </TableView>
             <GridPane alignment="CENTER_RIGHT" layoutY="52.0" prefHeight="138.0" prefWidth="200.0">
@@ -111,7 +114,7 @@
                   <Font name="Serif Regular" size="14.0" />
                </font>
             </Button>
-                <Button layoutX="50.0" layoutY="263.0" mnemonicParsing="false" onAction="#createBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
+                <Button layoutX="50.0" layoutY="263.0" mnemonicParsing="false" onAction="#toggleCreateBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="14.0" />
                     </font>
@@ -126,26 +129,26 @@
                   <Font name="Serif Regular" size="14.0" />
                </font>
             </Button>
-            <AnchorPane layoutX="192.0" prefHeight="506.0" prefWidth="561.0" style="-fx-background-color: #9F9C99;">
+            <AnchorPane fx:id="createBillView" layoutX="192.0" prefHeight="506.0" prefWidth="561.0" style="-fx-background-color: #9F9C99;" visible="false">
                <children>
                   <Label alignment="CENTER" layoutX="179.0" layoutY="52.0" prefHeight="55.0" prefWidth="200.0" text="Create a bill" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" editable="false" layoutX="179.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 100;" text="kw price:" />
-                  <TextField alignment="CENTER" layoutX="181.0" layoutY="177.0" prefHeight="25.0" prefWidth="200.0" promptText="Electricity consumption" style="-fx-background-radius: 100;" />
-                  <Button layoutX="179.0" layoutY="266.0" mnemonicParsing="false" onAction="#kwPriceUpdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Cancel " textFill="WHITE">
+                  <TextField fx:id="createBillKwPrice" alignment="CENTER" editable="false" layoutX="179.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 100;" text="kw price:" />
+                  <TextField fx:id="createBillElectricConsumption" alignment="CENTER" layoutX="181.0" layoutY="177.0" prefHeight="25.0" prefWidth="200.0" promptText="Electricity consumption in kw" style="-fx-background-radius: 100;" />
+                  <Button layoutX="179.0" layoutY="266.0" mnemonicParsing="false" onAction="#toggleCreateBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Cancel " textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="288.0" layoutY="266.0" mnemonicParsing="false" onAction="#kwPriceUpdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
+                  <Button layoutX="288.0" layoutY="266.0" mnemonicParsing="false" onAction="#createBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="14.0" />
                      </font>
                   </Button>
-                  <DatePicker layoutX="179.0" layoutY="137.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
+                  <DatePicker fx:id="createBillDate" layoutX="179.0" layoutY="137.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
                </children>
             </AnchorPane>
             </children>

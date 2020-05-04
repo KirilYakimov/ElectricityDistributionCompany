@@ -1,7 +1,7 @@
 package configuration;
 
 
-import entity.Bills;
+import entity.Bill;
 import entity.Client;
 import entity.Employee;
 import entity.KilowattPrice;
@@ -20,7 +20,7 @@ public class SessionFactoryUtil {
 
             configuration.addAnnotatedClass(Employee.class)
                     .addAnnotatedClass(Client.class)
-                    .addAnnotatedClass(Bills.class)
+                    .addAnnotatedClass(Bill.class)
                     .addAnnotatedClass(KilowattPrice.class);
 
             ServiceRegistry serviceRegistry
