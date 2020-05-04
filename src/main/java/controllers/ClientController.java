@@ -68,7 +68,7 @@ public class ClientController {
     @FXML
     private void initialize() {
         final ObservableList<Client> clients = FXCollections.observableArrayList(ClientDAO.getClient());
-        final ObservableList<ClientType> types = FXCollections.observableArrayList(ClientType.PRIVATE_SUBSCRIBER,ClientType.LEGAL_ENTITY);
+        final ObservableList<ClientType> types = FXCollections.observableArrayList(ClientType.PRIVATE_SUBSCRIBER, ClientType.LEGAL_ENTITY);
 
         clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
