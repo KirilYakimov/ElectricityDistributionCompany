@@ -16,8 +16,46 @@ public class KilowattPrice {
     @Column(name = "changed_date")
     private LocalDate changedOnDate;
 
-    @OneToMany(mappedBy = "kilowattPrice", fetch = FetchType.LAZY)
-    private Set<Bills> billsList;
+    @Column(name = "price")
+    private double price;
 
+    public KilowattPrice() {}
 
+    public KilowattPrice(LocalDate changedOnDate, double price) {
+        this.changedOnDate = changedOnDate;
+        this.price = price;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public LocalDate getChangedOnDate() {
+        return changedOnDate;
+    }
+
+    public void setChangedOnDate(LocalDate changedOnDate) {
+        this.changedOnDate = changedOnDate;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "KilowattPrice{" +
+                "id=" + id +
+                ", changedOnDate=" + changedOnDate +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -64,22 +64,19 @@ public class EmployeeController {
     @FXML
     private AnchorPane addEmployeeView;
 
-    public Employee employee;
+    ObservableList<Employee> observableList = FXCollections.observableList(EmployeeDAO.getEmployees());
+    private Employee employee;
     //
     @FXML
     private void initialize() {
-        final ObservableList<Employee> employees = FXCollections.observableArrayList(EmployeeDAO.getEmployees());
-
         employeeListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         employeeListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         employeeListTableViewEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         employeeListTableViewBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         employeeListTableViewSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
 
-        employeeListTableView.setItems(employees);
-
+        employeeListTableView.setItems(observableList);
     }
-
 
     public void saveEmployee() {
         employee = new Employee(

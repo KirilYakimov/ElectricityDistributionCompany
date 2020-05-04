@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,10 +29,10 @@ public class Client {
     @Column(name = "type", nullable = false)
     private ClientType type;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client_id", fetch = FetchType.LAZY)
     private Set<Bills> billsList;
 
-    public Client(){}
+    public Client(){ billsList = new HashSet<Bills>();}
 
     public Client(String firstName, String lastName, String email, String address, ClientType type) {
         this.firstName = firstName;
@@ -39,16 +40,8 @@ public class Client {
         this.email = email;
         this.address = address;
         this.type = type;
+        billsList = new HashSet<Bills>();
     }
-
-    /*public Client(String firstName, String lastName, String email, String address, ClientType type, Set<Bills> billsList) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.type = type;
-        this.billsList = billsList;
-    }*/
 
     public long getId() {
         return id;
@@ -96,6 +89,14 @@ public class Client {
 
     public void setType(ClientType type) {
         this.type = type;
+    }
+
+    public Set<Bills> getBillsList() {
+        return billsList;
+    }
+
+    public void setBillsList(Set<Bills> billsList) {
+        this.billsList = billsList;
     }
 
     @Override
