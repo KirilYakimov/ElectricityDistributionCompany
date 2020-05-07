@@ -1,11 +1,7 @@
 package controllers;
 
-import dao.ClientDAO;
 import dao.KilowattDAO;
-import entity.Client;
 import entity.KilowattPrice;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,12 +52,17 @@ public class MainController {
         changeScene(actionEvent,"Client");
     }
 
+    public void RealEstateButton(ActionEvent actionEvent) throws Exception {
+        changeScene(actionEvent,"RealEstate");
+    }
+
     public void PayButton(ActionEvent actionEvent) throws Exception {
         changeScene(actionEvent,"Bills");
     }
 
     public void changeScene(ActionEvent actionEvent,String sceneName) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("/view/" + sceneName +".fxml"));
+        loginParent.getStylesheets().add("/styling/main.css");
         Scene mainScene = new Scene(loginParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(mainScene);

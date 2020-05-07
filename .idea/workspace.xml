@@ -8,18 +8,30 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/configuration/SessionFactoryUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/configuration/SessionFactoryUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/BillsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/BillsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/entity/Bills.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/EmployeeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controllers/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/entity/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/entity/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/view/Bills.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/view/Bills.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/view/Client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/view/Client.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/view/Employee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/view/Employee.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/view/Index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/view/Index.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/configuration/SessionFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/configuration/SessionFactoryUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/BillsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/BillsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Bills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/Bills.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Bills.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Client.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Employee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Employee.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Index.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +192,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="601" y="143" key="#ElectricityDistributionCompany_[run]/0.0.1920.1040@0.0.1920.1040" timestamp="1588280999970" />
+    <state x="494" y="187" key="#Inspections" timestamp="1588705339091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="494" y="187" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1588705339091" />
     <state x="474" y="175" key="#Project_Structure" timestamp="1588303278446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -188,10 +204,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588280865817" />
-    <state x="628" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1588625887009">
+    <state x="986" y="207" key="#com.intellij.ide.util.MemberChooser" timestamp="1588820817274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="628" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588625887009" />
+    <state x="986" y="207" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588820817274" />
     <state x="599" y="409" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1588529209256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -200,26 +216,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="376" width="429" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1588280671767" />
-    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588618053849">
+    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588805709809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588618053849" />
-    <state width="1298" height="192" key="GridCell.Tab.0.bottom" timestamp="1588628086704">
+    <state x="521" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588805709809" />
+    <state x="632" y="275" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1588706654365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588628086704" />
-    <state width="1298" height="192" key="GridCell.Tab.0.center" timestamp="1588628086704">
+    <state x="632" y="275" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588706654365" />
+    <state width="1298" height="85" key="GridCell.Tab.0.bottom" timestamp="1588822957765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="192" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588628086704" />
-    <state width="1298" height="192" key="GridCell.Tab.0.left" timestamp="1588628086704">
+    <state width="1298" height="85" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588822957765" />
+    <state width="1298" height="85" key="GridCell.Tab.0.center" timestamp="1588822957765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="192" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588628086704" />
-    <state width="1298" height="192" key="GridCell.Tab.0.right" timestamp="1588628086704">
+    <state width="1298" height="85" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588822957765" />
+    <state width="1298" height="85" key="GridCell.Tab.0.left" timestamp="1588822957765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1298" height="192" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588628086704" />
+    <state width="1298" height="85" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588822957765" />
+    <state width="1298" height="85" key="GridCell.Tab.0.right" timestamp="1588822957765">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1298" height="85" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588822957765" />
     <state x="439" y="186" key="SettingsEditor" timestamp="1588300832857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -228,10 +248,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1588336601701" />
-    <state x="577" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1588611786758">
+    <state x="577" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1588786405601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="577" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588611786758" />
+    <state x="577" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588786405601" />
     <state x="653" y="118" key="refactoring.ChangeSignatureDialog" timestamp="1588362913248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
