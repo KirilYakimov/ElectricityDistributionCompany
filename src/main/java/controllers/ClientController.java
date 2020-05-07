@@ -1,7 +1,9 @@
 package controllers;
 
 import dao.ClientDAO;
+import dao.ClientStatisticDAO;
 import entity.Client;
+import entity.ClientStatistic;
 import entity.ClientType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,8 +22,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ClientController {
-
-
     //--------------TABLE-----------------//
     @FXML
     private TableView<Client> clientListTableView;
@@ -67,16 +67,9 @@ public class ClientController {
 
     @FXML
     private void initialize() {
-        final ObservableList<Client> clients = FXCollections.observableArrayList(ClientDAO.getClient());
         final ObservableList<ClientType> types = FXCollections.observableArrayList(ClientType.PRIVATE_SUBSCRIBER, ClientType.LEGAL_ENTITY);
+        ClientTableView();
 
-        clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        clientListTableViewEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        clientListTableViewAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        clientListTableViewType.setCellValueFactory(new PropertyValueFactory<>("type"));
-
-        clientListTableView.setItems(clients);
         clientType.setItems(types);
         clientTypeUpd.setItems(types);
     }
@@ -84,9 +77,11 @@ public class ClientController {
     public void toggleAdd() {
         boolean flag = addView.isVisible();
         addView.setVisible(!flag);
+        updateView.setVisible(false);
     }
 
     public void saveClient() {
+
         client = new Client(
                 firstName.getText(),
                 lastName.getText(),
@@ -94,19 +89,23 @@ public class ClientController {
                 address.getText(),
                 clientType.getSelectionModel().getSelectedItem()
         );
+
         ClientDAO.saveClient(client);
+        ClientStatisticDAO.saveClientStatistic(new ClientStatistic(client));
+
+        ClientTableView();
         addView.setVisible(false);
     }
 
     public void doubleClickUpd(MouseEvent mouseEvent) {
-        if (mouseEvent.getClickCount() > 1) {
+        if (mouseEvent.getClickCount() == 2 && !clientListTableView.getSelectionModel().getSelectedCells().isEmpty()) {
             toggleUpdate();
         }
     }
 
     public void toggleUpdate() {
         boolean flag = updateView.isVisible();
-        updateView.setVisible(!flag);
+
         if (clientListTableView.getSelectionModel().getSelectedItem() != null) {
             client = clientListTableView.getSelectionModel().getSelectedItem();
             firstNameUpd.setText(client.getFirstName());
@@ -115,6 +114,8 @@ public class ClientController {
             addressUpd.setText(client.getAddress());
             clientType.setValue(client.getType());
 
+            updateView.setVisible(!flag);
+            addView.setVisible(false);
         }
     }
 
@@ -129,13 +130,33 @@ public class ClientController {
         client.setType(clientTypeUpd.getSelectionModel().getSelectedItem());
 
         ClientDAO.saveOrUpdateClient(client);
+        ClientTableView();
         updateView.setVisible(!flag);
     }
 
     public void deleteClient() {
-        client = clientListTableView.getSelectionModel().getSelectedItem();
-        ClientDAO.deleteClient(client);
+        if (clientListTableView.getSelectionModel().getSelectedItem() != null) {
+            client = clientListTableView.getSelectionModel().getSelectedItem();
+            ClientDAO.deleteClient(client);
+            ClientTableView();
+        }
     }
+
+    private void ClientTableView() {
+        final ObservableList<Client> clients = FXCollections.observableArrayList(ClientDAO.getClient());
+        final ObservableList<ClientType> types = FXCollections.observableArrayList(ClientType.PRIVATE_SUBSCRIBER, ClientType.LEGAL_ENTITY);
+
+        clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        clientListTableViewEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        clientListTableViewAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        clientListTableViewType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        clientListTableView.setItems(clients);
+        clientType.setItems(types);
+        clientTypeUpd.setItems(types);
+    }
+
 
     public void backToMain(ActionEvent actionEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));

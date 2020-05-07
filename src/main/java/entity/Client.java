@@ -32,7 +32,13 @@ public class Client {
     @OneToMany(mappedBy = "client_id", fetch = FetchType.LAZY)
     private Set<Bill> billList;
 
-    public Client(){ billList = new HashSet<Bill>();}
+    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY)
+    private ClientStatistic clientStatistics;
+
+    public Client() {
+       billList = new HashSet<>();
+       clientStatistics = new ClientStatistic();
+    }
 
     public Client(String firstName, String lastName, String email, String address, ClientType type) {
         this.firstName = firstName;
@@ -40,15 +46,12 @@ public class Client {
         this.email = email;
         this.address = address;
         this.type = type;
-        billList = new HashSet<Bill>();
+        this.billList = new HashSet<>();
+        this.clientStatistics = new ClientStatistic();
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -99,6 +102,22 @@ public class Client {
         this.billList = billList;
     }
 
+    public double getTotalPricePaid() {
+        return clientStatistics.getTotalPricePaid();
+    }
+
+    public double getHighestPricePaid() {
+        return clientStatistics.getHighestPricePaid();
+    }
+
+    public ClientStatistic getClientStatistics() {
+        return clientStatistics;
+    }
+
+    public void setClientStatistics(ClientStatistic clientStatistics) {
+        this.clientStatistics = clientStatistics;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -111,4 +130,6 @@ public class Client {
                 ", billsList=" + billList +
                 '}';
     }
+
+
 }

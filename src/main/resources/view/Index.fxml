@@ -28,7 +28,7 @@
                     <children>
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#EmployeeButton" prefHeight="60.0" prefWidth="170.0" text="Employees" wrapText="true" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#ClientButton" prefHeight="60.0" prefWidth="170.0" text="Clients" wrapText="true" GridPane.rowIndex="1" />
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Real Estate" wrapText="true" GridPane.rowIndex="2" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#RealEstateButton" prefHeight="60.0" prefWidth="170.0" text="Real Estate" wrapText="true" GridPane.rowIndex="2" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#PayButton" prefHeight="60.0" prefWidth="170.0" text="Pay" wrapText="true" GridPane.rowIndex="3" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Statistics" wrapText="true" GridPane.rowIndex="4" />
                     </children>

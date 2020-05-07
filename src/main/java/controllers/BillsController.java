@@ -1,15 +1,12 @@
 package controllers;
 
+import com.jfoenix.controls.JFXTextField;
 import dao.BillDAO;
-import dao.ClientDAO;
+import dao.ClientStatisticDAO;
 import dao.KilowattDAO;
 import entity.Bill;
 import entity.Client;
 import entity.KilowattPrice;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,12 +20,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class BillsController {
     //-----------ClientTableView--------//
@@ -59,13 +57,9 @@ public class BillsController {
     private TableColumn<Object, Object> updateBillTableViewStatus;
     //-----------KW_Price_Update--------//
     @FXML
-    private Label legalEntityDate;
+    private JFXTextField privateSubscriberPrice;
     @FXML
-    private Label privateSubscriberDate;
-    @FXML
-    private TextField privateSubscriberPrice;
-    @FXML
-    private TextField legalEntityPrice;
+    private JFXTextField legalEntityPrice;
     @FXML
     private AnchorPane updateKilowattView;
     //-----------Client_Bills--------//
@@ -102,17 +96,17 @@ public class BillsController {
         }
     }
 
-    public void toggleUpdate() {
-        Client client = clientListTableView.getSelectionModel().getSelectedItem();
-        updateClientBills();
+   public void toggleUpdate() {
+        if (clientListTableView.getSelectionModel().getSelectedItem() != null) {
+            flag = updateView.isVisible();
+            updateView.setVisible(!flag);
+            updateClientBills();
+            Client client =  clientListTableView.getSelectionModel().getSelectedItem();
 
-        flag = updateView.isVisible();
-        updateView.setVisible(!flag);
-
-
-        client_id.setText(String.valueOf(client.getId()));
-        clientName.setText(client.getFirstName() + " " + client.getLastName());
-        clientAddress.setText(client.getAddress());
+            client_id.setText(String.valueOf(client.getId()));
+            clientName.setText(client.getFirstName() + " " + client.getLastName());
+            clientAddress.setText(client.getAddress());
+        }
 
         if (!updateView.isVisible()) {
             createBillView.setVisible(false);
@@ -131,10 +125,17 @@ public class BillsController {
     }
 
     public void payBill() {
+        Client client = clientListTableView.getSelectionModel().getSelectedItem();
         Bill bill = updateTableView.getSelectionModel().getSelectedItem();
         flag = bill.isPaid();
         bill.setPaid(!flag);
+
         BillDAO.payBill(bill);
+
+        client.getClientStatistics().setHighestPricePaid(ClientStatisticDAO.getClientHighestBillPaid(client));
+        client.getClientStatistics().setTotalPricePaid(ClientStatisticDAO.getClientTotalBillsPaid(client));
+        ClientStatisticDAO.saveOrUpdateClientStatistic(client.getClientStatistics());
+
         updateClientBills();
     }
 
@@ -144,8 +145,7 @@ public class BillsController {
 
         double energyConsumption = Double.parseDouble(createBillElectricConsumption.getText());
         double kwPrice = kilowattPrices.get(client.getType().ordinal()).getPrice();
-
-        double price = energyConsumption * kwPrice;
+        double price = round(energyConsumption * kwPrice, 2);
 
         Bill bill = new Bill(
                 client,
@@ -157,6 +157,7 @@ public class BillsController {
         );
 
         BillDAO.saveBill(bill);
+        updateClientBills();
         createBillView.setVisible(false);
     }
 
@@ -189,20 +190,20 @@ public class BillsController {
 
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        legalEntityDate.setText("Changed on: " + kilowattPrices.get(0).getChangedOnDate().format(pattern));
         legalEntityPrice.setText(String.valueOf(kilowattPrices.get(0).getPrice()));
-        privateSubscriberDate.setText("Changed on: " + kilowattPrices.get(1).getChangedOnDate().format(pattern));
+        legalEntityPrice.setPromptText("Last changed:" + kilowattPrices.get(0).getChangedOnDate().format(pattern));
         privateSubscriberPrice.setText(String.valueOf(kilowattPrices.get(1).getPrice()));
+        privateSubscriberPrice.setPromptText("Last changed:" + kilowattPrices.get(1).getChangedOnDate().format(pattern));
     }
 
     private void updateClientView() {
-        final ObservableList<Client> clients = FXCollections.observableArrayList(ClientDAO.getClient());
+        final ObservableList<Client> clients = FXCollections.observableArrayList(ClientStatisticDAO.getClientStatistic());
 
         clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         clientListTableViewEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        highestBillPaidTableView.setCellValueFactory(new PropertyValueFactory<>("address"));
-        totalPaidTableView.setCellValueFactory(new PropertyValueFactory<>("type"));
+        highestBillPaidTableView.setCellValueFactory(new PropertyValueFactory<>("highestPricePaid"));
+        totalPaidTableView.setCellValueFactory(new PropertyValueFactory<>("totalPricePaid"));
 
         clientListTableView.setItems(clients);
     }
