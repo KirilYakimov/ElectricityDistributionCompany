@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class RealEstateController {
     private RealEstate realEstate;
@@ -83,7 +84,7 @@ public class RealEstateController {
             addressUpd.setText(realEstate.getAddress());
             headBranchPhoneUpd.setText(Integer.toString(realEstate.getPhone()));
             headBranchEmailUpd.setText(realEstate.getEmail());
-            maintenanceUpd.setText(Double.toString(realEstate.getMaintenance()));
+            maintenanceUpd.setText(realEstate.getMaintenance().toString());
 
             updateView.setVisible(!flag);
             addView.setVisible(false);
@@ -101,7 +102,7 @@ public class RealEstateController {
                     address.getText(),
                     Integer.parseInt(headBranchPhone.getText()),
                     headBranchEmail.getText(),
-                    Double.parseDouble(maintenance.getText())
+                    new BigDecimal(maintenance.getText())
             );
 
             RealEstateDAO.saveRealEstate(realEstate);
@@ -123,7 +124,7 @@ public class RealEstateController {
             realEstate.setAddress(addressUpd.getText());
             realEstate.setPhone(Integer.parseInt(headBranchPhoneUpd.getText()));
             realEstate.setEmail(headBranchEmailUpd.getText());
-            realEstate.setMaintenance(Double.parseDouble(maintenanceUpd.getText()));
+            realEstate.setMaintenance(new BigDecimal(maintenanceUpd.getText()));
 
             RealEstateDAO.saveOrUpdateRealEstate(realEstate);
             updateView.setVisible(false);
@@ -151,8 +152,9 @@ public class RealEstateController {
     }
 
     public void backToMain(ActionEvent actionEvent) throws IOException {
-        Parent employeeParent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));
-        Scene employeeScene = new Scene(employeeParent);
+        Parent parent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));
+        parent.getStylesheets().add("/styling/main.css");
+        Scene employeeScene = new Scene(parent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(employeeScene);
         window.show();

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -32,26 +30,27 @@
                 </TableView>
             </children>
         </AnchorPane>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="31.0" prefHeight="82.0" prefWidth="200.0" text="Clients" textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="553.0" AnchorPane.topAnchor="31.0">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="10.0" prefHeight="82.0" prefWidth="200.0" text="Clients" textFill="WHITE" AnchorPane.bottomAnchor="414.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="553.0" AnchorPane.topAnchor="10.0">
             <font>
                 <Font name="Serif Bold" size="28.0" />
             </font>
         </Label>
-        <JFXButton layoutX="50.0" layoutY="113.0" onAction="#toggleUpdate" prefHeight="35.0" prefWidth="100.0" text="Update" textFill="WHITE">
+        <JFXButton layoutX="50.0" layoutY="150.0" onAction="#toggleUpdate" prefHeight="35.0" prefWidth="100.0" text="Update" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="50.0" layoutY="157.0" onAction="#toggleKwUpdate" prefHeight="35.0" prefWidth="100.0" text="Kw price" textFill="WHITE">
+        <JFXButton layoutX="50.0" layoutY="194.0" onAction="#toggleKwUpdate" prefHeight="35.0" prefWidth="100.0" text="Kw price" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="50.0" layoutY="200.0" onAction="#backToMain" prefHeight="35.0" prefWidth="100.0" text="Back" textFill="WHITE">
+        <JFXButton layoutX="50.0" layoutY="237.0" onAction="#backToMain" prefHeight="35.0" prefWidth="100.0" text="Back" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXButton>
+        <JFXTextField fx:id="clientFilter" layoutX="33.0" layoutY="100.0" promptText="Client filter" />
         <AnchorPane fx:id="updateView" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #343148;" visible="false">
             <children>
                 <Label alignment="CENTER" layoutY="26.0" prefHeight="67.0" prefWidth="200.0" text="Client bills" textFill="WHITE">
@@ -126,31 +125,31 @@
                         <Font name="Serif Regular" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton layoutX="50.0" layoutY="405.0" mnemonicParsing="false" onAction="#toggleUpdate" prefHeight="40.0" prefWidth="100.0" text="Cancel " textFill="WHITE">
+                <JFXButton fx:id="backToClientsView" layoutX="50.0" layoutY="405.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Cancel " textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="14.0" />
                     </font>
                 </JFXButton>
-                <AnchorPane fx:id="createBillView" layoutX="192.0" prefHeight="506.0" prefWidth="561.0" style="-fx-background-color: #9F9C99;" visible="false">
+                <AnchorPane fx:id="createBillView" layoutX="192.0" prefHeight="506.0" prefWidth="561.0" style="-fx-background-color: #2A293E;" visible="false">
                     <children>
                         <Label alignment="CENTER" layoutX="179.0" layoutY="52.0" prefHeight="55.0" prefWidth="200.0" text="Create a bill" textFill="WHITE">
                             <font>
-                                <Font name="Serif Regular" size="24.0" />
+                                <Font name="Serif Bold" size="24.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="createBillKwPrice" alignment="CENTER" editable="false" layoutX="179.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 100;" text="kw price:" />
-                        <TextField fx:id="createBillElectricConsumption" alignment="CENTER" layoutX="181.0" layoutY="177.0" prefHeight="25.0" prefWidth="200.0" promptText="Electricity consumption in kw" style="-fx-background-radius: 100;" />
-                        <Button layoutX="179.0" layoutY="266.0" mnemonicParsing="false" onAction="#toggleCreateBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Cancel " textFill="WHITE">
+                        <JFXTextField fx:id="createBillKwPrice" alignment="CENTER" editable="false" layoutX="179.0" layoutY="175.0" prefHeight="25.0" prefWidth="200.0" text="kw price:" />
+                        <JFXTextField fx:id="createBillElectricConsumption" alignment="CENTER" layoutX="180.0" layoutY="136.0" prefHeight="25.0" prefWidth="200.0" promptText="Electricity consumption in kw" />
+                        <JFXButton layoutX="179.0" layoutY="266.0" mnemonicParsing="false" onAction="#toggleCreateBill" prefHeight="40.0" prefWidth="100.0" text="Cancel " textFill="WHITE">
                             <font>
                                 <Font name="Serif Regular" size="14.0" />
                             </font>
-                        </Button>
-                        <Button layoutX="288.0" layoutY="266.0" mnemonicParsing="false" onAction="#createBill" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #a46934; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
+                        </JFXButton>
+                        <JFXButton layoutX="288.0" layoutY="266.0" mnemonicParsing="false" onAction="#createBill" prefHeight="40.0" prefWidth="100.0" text="Create" textFill="WHITE">
                             <font>
                                 <Font name="Serif Regular" size="14.0" />
                             </font>
-                        </Button>
-                        <DatePicker fx:id="createBillDate" layoutX="179.0" layoutY="137.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
+                        </JFXButton>
+                        <JFXDatePicker fx:id="createBillDate" layoutX="179.0" layoutY="216.0" prefHeight="28.0" prefWidth="235.0" promptText="Date of bill" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
                     </children>
                 </AnchorPane>
             </children>

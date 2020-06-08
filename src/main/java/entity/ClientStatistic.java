@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "client_statistic")
@@ -18,10 +19,10 @@ public class ClientStatistic {
     private Client client;
 
     @Column(name = "highest_price_paid")
-    private double highestPricePaid;
+    private BigDecimal highestPricePaid;
 
     @Column(name = "total_price_paid")
-    private double totalPricePaid;
+    private BigDecimal totalPricePaid;
 
     public ClientStatistic() { }
 
@@ -29,7 +30,7 @@ public class ClientStatistic {
         this.client = client;
     }
 
-    public ClientStatistic(Client client, double highestPricePaid, double totalPricePaid) {
+    public ClientStatistic(Client client, BigDecimal highestPricePaid, BigDecimal totalPricePaid) {
         this.client = client;
         this.highestPricePaid = highestPricePaid;
         this.totalPricePaid = totalPricePaid;
@@ -43,19 +44,19 @@ public class ClientStatistic {
         this.client = client;
     }
 
-    public double getHighestPricePaid() {
+    public BigDecimal getHighestPricePaid() {
         return highestPricePaid;
     }
 
-    public void setHighestPricePaid(double highestPricePaid) {
+    public void setHighestPricePaid(BigDecimal highestPricePaid) {
         this.highestPricePaid = highestPricePaid;
     }
 
-    public double getTotalPricePaid() {
+    public BigDecimal getTotalPricePaid() {
         return totalPricePaid;
     }
 
-    public void setTotalPricePaid(double totalPricePaid) {
+    public void setTotalPricePaid(BigDecimal totalPricePaid) {
         this.totalPricePaid = totalPricePaid;
     }
 

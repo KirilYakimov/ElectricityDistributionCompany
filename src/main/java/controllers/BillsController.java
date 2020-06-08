@@ -1,6 +1,8 @@
 package controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import configuration.DataValidation;
 import dao.BillDAO;
 import dao.ClientStatisticDAO;
 import dao.KilowattDAO;
@@ -22,11 +24,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class BillsController {
     //-----------ClientTableView--------//
@@ -75,19 +76,29 @@ public class BillsController {
     @FXML
     private AnchorPane createBillView;
     @FXML
-    private TextField createBillKwPrice;
+    private JFXTextField createBillKwPrice;
     @FXML
-    private TextField createBillElectricConsumption;
+    private JFXTextField createBillElectricConsumption;
     @FXML
     private DatePicker createBillDate;
     //
+    @FXML
+    private JFXTextField clientFilter;
+    @FXML
+    public JFXButton backToClientsView;
 
     boolean flag;
+    private ObservableList<Client> clients = null;
     private ArrayList<KilowattPrice> kilowattPrices = null;
 
     @FXML
     private void initialize() {
         updateClientView();
+        clientFilter.setOnMouseClicked(click -> clientListTableView.getSelectionModel().clearSelection());
+        backToClientsView.setOnAction(click -> {
+            updateClientView();
+            updateView.setVisible(false);
+        });
     }
 
     public void doubleClickUpd(MouseEvent mouseEvent) {
@@ -96,20 +107,27 @@ public class BillsController {
         }
     }
 
-   public void toggleUpdate() {
+    public void toggleUpdate() {
+        if (!clientFilter.getText().isEmpty()) {
+            boolean numbers = DataValidation.doubleValidator(clientFilter, "Please enter valid number!");
+            if (numbers) {
+                getClientsWhoPaidEqualOrLess(new BigDecimal(clientFilter.getText()));
+            }
+        }
+
         if (clientListTableView.getSelectionModel().getSelectedItem() != null) {
+            if (!updateView.isVisible()) {
+                createBillView.setVisible(false);
+            }
             flag = updateView.isVisible();
             updateView.setVisible(!flag);
             updateClientBills();
-            Client client =  clientListTableView.getSelectionModel().getSelectedItem();
+
+            Client client = clientListTableView.getSelectionModel().getSelectedItem();
 
             client_id.setText(String.valueOf(client.getId()));
             clientName.setText(client.getFirstName() + " " + client.getLastName());
             clientAddress.setText(client.getAddress());
-        }
-
-        if (!updateView.isVisible()) {
-            createBillView.setVisible(false);
         }
     }
 
@@ -143,22 +161,25 @@ public class BillsController {
         kilowattPrices = new ArrayList<>(KilowattDAO.getKilowattPrice());
         Client client = clientListTableView.getSelectionModel().getSelectedItem();
 
-        double energyConsumption = Double.parseDouble(createBillElectricConsumption.getText());
-        double kwPrice = kilowattPrices.get(client.getType().ordinal()).getPrice();
-        double price = round(energyConsumption * kwPrice, 2);
+        boolean isConsumptionValid = DataValidation.doubleValidator(createBillElectricConsumption, "Enter valid energy consumption!");
 
-        Bill bill = new Bill(
-                client,
-                createBillDate.getValue(),
-                kwPrice,
-                energyConsumption,
-                price,
-                false
-        );
+        BigDecimal energyConsumption = new BigDecimal(createBillElectricConsumption.getText());
+        BigDecimal kwPrice = kilowattPrices.get(client.getType().ordinal()).getPrice();
+        BigDecimal price = energyConsumption.multiply(kwPrice);
 
-        BillDAO.saveBill(bill);
-        updateClientBills();
-        createBillView.setVisible(false);
+        if (isConsumptionValid) {
+            Bill bill = new Bill(
+                    client,
+                    createBillDate.getValue(),
+                    kwPrice,
+                    energyConsumption,
+                    price,
+                    false
+            );
+            BillDAO.saveBill(bill);
+            updateClientBills();
+            createBillView.setVisible(false);
+        }
     }
 
     public void deleteBill() {
@@ -170,13 +191,13 @@ public class BillsController {
     public void kwPriceUpdate() {
         kilowattPrices = new ArrayList<>(KilowattDAO.getKilowattPrice());
 
-        if (kilowattPrices.get(0).getPrice() != Double.parseDouble(legalEntityPrice.getText())) {
+        if (!kilowattPrices.get(0).getPrice().equals(new BigDecimal(legalEntityPrice.getText()))) {
             kilowattPrices.get(0).setChangedOnDate(LocalDate.now());
-            kilowattPrices.get(0).setPrice(Double.parseDouble(legalEntityPrice.getText()));
+            kilowattPrices.get(0).setPrice(new BigDecimal(legalEntityPrice.getText()));
         }
-        if (kilowattPrices.get(1).getPrice() != Double.parseDouble(privateSubscriberPrice.getText())) {
+        if (!kilowattPrices.get(1).getPrice().equals(new BigDecimal(legalEntityPrice.getText()))) {
             kilowattPrices.get(1).setChangedOnDate(LocalDate.now());
-            kilowattPrices.get(1).setPrice(Double.parseDouble(privateSubscriberPrice.getText()));
+            kilowattPrices.get(1).setPrice(new BigDecimal(privateSubscriberPrice.getText()));
         }
 
         KilowattDAO.saveOrUpdateKilowatt(kilowattPrices.get(0), kilowattPrices.get(1));
@@ -197,7 +218,7 @@ public class BillsController {
     }
 
     private void updateClientView() {
-        final ObservableList<Client> clients = FXCollections.observableArrayList(ClientStatisticDAO.getClientStatistic());
+        clients = FXCollections.observableArrayList(ClientStatisticDAO.getClientStatistic());
 
         clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -206,6 +227,20 @@ public class BillsController {
         totalPaidTableView.setCellValueFactory(new PropertyValueFactory<>("totalPricePaid"));
 
         clientListTableView.setItems(clients);
+    }
+
+    private void getClientsWhoPaidEqualOrLess(BigDecimal number) {
+        clients = FXCollections.observableArrayList(ClientStatisticDAO.ClientsWhoPaidEqualOrLess(number));
+
+        clientListTableViewFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        clientListTableViewLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        clientListTableViewEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        highestBillPaidTableView.setCellValueFactory(new PropertyValueFactory<>("highestPricePaid"));
+        totalPaidTableView.setCellValueFactory(new PropertyValueFactory<>("totalPricePaid"));
+
+        clientListTableView.setItems(clients);
+
+        clientFilter.clear();
     }
 
     private void updateClientBills() {
@@ -223,6 +258,7 @@ public class BillsController {
 
     public void backToMain(ActionEvent actionEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));
+        parent.getStylesheets().add("/styling/main.css");
         Scene scene = new Scene(parent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene);

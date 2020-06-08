@@ -1,5 +1,7 @@
 package controllers;
 
+import com.jfoenix.controls.JFXTextField;
+import configuration.DataValidation;
 import dao.ClientDAO;
 import dao.ClientStatisticDAO;
 import entity.Client;
@@ -37,24 +39,24 @@ public class ClientController {
     private TableColumn<Object, Object> clientListTableViewType;
     //--------------CREATE-----------------//
     @FXML
-    private TextField firstName;
+    private JFXTextField firstName;
     @FXML
-    private TextField lastName;
+    private JFXTextField lastName;
     @FXML
-    private TextField email;
+    private JFXTextField email;
     @FXML
-    private TextField address;
+    private JFXTextField address;
     @FXML
     private ComboBox<ClientType> clientType;
     //--------------UPDATE-----------------//
     @FXML
-    private TextField firstNameUpd;
+    private JFXTextField firstNameUpd;
     @FXML
-    private TextField lastNameUpd;
+    private JFXTextField lastNameUpd;
     @FXML
-    private TextField emailUpd;
+    private JFXTextField emailUpd;
     @FXML
-    private TextField addressUpd;
+    private JFXTextField addressUpd;
     @FXML
     private ComboBox<ClientType> clientTypeUpd;
 
@@ -81,14 +83,20 @@ public class ClientController {
     }
 
     public void saveClient() {
+        boolean isEmailValid = DataValidation.emailValidation(email, "Please enter a valid email!");
+        boolean isFirstNameValid = DataValidation.textValidation(firstName, "Please enter a valid name!");
+        boolean isLastNameValid = DataValidation.textValidation(lastName, "Please enter a valid name!");
+        boolean isAddressValid = DataValidation.textValidation(address, "Please enter a valid address!");
 
-        client = new Client(
-                firstName.getText(),
-                lastName.getText(),
-                email.getText(),
-                address.getText(),
-                clientType.getSelectionModel().getSelectedItem()
-        );
+        if (isEmailValid && isFirstNameValid && isLastNameValid && isAddressValid) {
+            client = new Client(
+                    firstName.getText(),
+                    lastName.getText(),
+                    email.getText(),
+                    address.getText(),
+                    clientType.getSelectionModel().getSelectedItem()
+            );
+        }
 
         ClientDAO.saveClient(client);
         ClientStatisticDAO.saveClientStatistic(new ClientStatistic(client));
@@ -122,16 +130,22 @@ public class ClientController {
     public void updateClient() {
         boolean flag = updateView.isVisible();
 
-        client = clientListTableView.getSelectionModel().getSelectedItem();
-        client.setFirstName(firstNameUpd.getText());
-        client.setLastName(lastNameUpd.getText());
-        client.setEmail(emailUpd.getText());
-        client.setAddress(addressUpd.getText());
-        client.setType(clientTypeUpd.getSelectionModel().getSelectedItem());
+        boolean isEmailValid = DataValidation.emailValidation(email, "Please enter a valid email!");
+        boolean isFirstNameValid = DataValidation.textValidation(firstName, "Please enter a valid name!");
+        boolean isLastNameValid = DataValidation.textValidation(lastName, "Please enter a valid name!");
+        boolean isAddressValid = DataValidation.textValidation(address, "Please enter a valid address!");
 
-        ClientDAO.saveOrUpdateClient(client);
-        ClientTableView();
-        updateView.setVisible(!flag);
+        if (isEmailValid && isFirstNameValid && isLastNameValid && isAddressValid) {
+            client = clientListTableView.getSelectionModel().getSelectedItem();
+            client.setFirstName(firstNameUpd.getText());
+            client.setLastName(lastNameUpd.getText());
+            client.setEmail(emailUpd.getText());
+            client.setAddress(addressUpd.getText());
+            client.setType(clientTypeUpd.getSelectionModel().getSelectedItem());
+            ClientDAO.saveOrUpdateClient(client);
+            ClientTableView();
+            updateView.setVisible(!flag);
+        }
     }
 
     public void deleteClient() {
@@ -160,6 +174,7 @@ public class ClientController {
 
     public void backToMain(ActionEvent actionEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));
+        parent.getStylesheets().add("/styling/main.css");
         Scene scene = new Scene(parent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene);

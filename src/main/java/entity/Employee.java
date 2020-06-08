@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -25,11 +26,11 @@ public class Employee {
     private LocalDate birthDate;
 
     @Column(name = "salary", nullable = false)
-    private double salary;
+    private BigDecimal salary;
 
     public Employee(){}
 
-    public Employee(String firstName, String lastName, String email, LocalDate birthDate, Double salary){
+    public Employee(String firstName, String lastName, String email, LocalDate birthDate, BigDecimal salary){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -77,11 +78,11 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 

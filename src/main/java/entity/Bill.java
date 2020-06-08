@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -20,20 +21,20 @@ public class Bill {
     private LocalDate date;
 
     @Column(name = "kilowatt_price", nullable = false)
-    private double kilowatt_price;
+    private BigDecimal kilowatt_price;
 
     @Column(name = "electricity_consumption", nullable = false)
-    private double electricity_consumption;
+    private BigDecimal electricity_consumption;
 
     @Column(name = "price", nullable = false)
-    private double price;
+    private BigDecimal price;
 
     @Column(name = "paid", nullable = false)
     private boolean paid;
 
     public Bill() {}
 
-    public Bill(Client client_id, LocalDate date, double kilowatt_price, double electricity_consumption, double price, boolean paid) {
+    public Bill(Client client_id, LocalDate date, BigDecimal kilowatt_price, BigDecimal electricity_consumption, BigDecimal price, boolean paid) {
         this.client_id = client_id;
         this.date = date;
         this.kilowatt_price = kilowatt_price;
@@ -66,27 +67,27 @@ public class Bill {
         this.date = date;
     }
 
-    public double getKilowatt_price() {
+    public BigDecimal getKilowatt_price() {
         return kilowatt_price;
     }
 
-    public void setKilowatt_price(double kilowatt_price) {
+    public void setKilowatt_price(BigDecimal kilowatt_price) {
         this.kilowatt_price = kilowatt_price;
     }
 
-    public double getElectricity_consumption() {
+    public BigDecimal getElectricity_consumption() {
         return electricity_consumption;
     }
 
-    public void setElectricity_consumption(double electricity_consumption) {
+    public void setElectricity_consumption(BigDecimal electricity_consumption) {
         this.electricity_consumption = electricity_consumption;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

@@ -11,9 +11,9 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #2A293E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientController">
     <children>
-        <AnchorPane prefHeight="500.0" prefWidth="555.0">
+        <AnchorPane prefHeight="506.0" prefWidth="555.0">
             <children>
-                <TableView fx:id="clientListTableView" onMouseClicked="#doubleClickUpd" prefHeight="500.0" prefWidth="555.0">
+                <TableView fx:id="clientListTableView" onMouseClicked="#doubleClickUpd" prefHeight="506.0" prefWidth="555.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="clientListTableViewFirstName" prefWidth="110.0" text="First name" />
                         <TableColumn fx:id="clientListTableViewLastName" prefWidth="110.0" text="Last name" />
