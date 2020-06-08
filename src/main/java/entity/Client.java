@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -102,11 +103,11 @@ public class Client {
         this.billList = billList;
     }
 
-    public double getTotalPricePaid() {
+    public BigDecimal getTotalPricePaid() {
         return clientStatistics.getTotalPricePaid();
     }
 
-    public double getHighestPricePaid() {
+    public BigDecimal getHighestPricePaid() {
         return clientStatistics.getHighestPricePaid();
     }
 
@@ -130,6 +131,4 @@ public class Client {
                 ", billsList=" + billList +
                 '}';
     }
-
-
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import configuration.DataValidation;
 import dao.EmployeeDAO;
@@ -19,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class EmployeeController {
@@ -45,7 +47,7 @@ public class EmployeeController {
     @FXML
     private JFXTextField email;
     @FXML
-    private DatePicker birthDate;
+    private JFXDatePicker birthDate;
     //--------------UPDATE-----------------//
     @FXML
     private JFXTextField firstNameUpd;
@@ -82,7 +84,7 @@ public class EmployeeController {
                     lastName.getText(),
                     email.getText(),
                     birthDate.getValue(),
-                    Double.parseDouble(salary.getText()));
+                    new BigDecimal(salary.getText()));
 
             EmployeeDAO.saveEmployee(employee);
             employeeTableView();
@@ -109,7 +111,7 @@ public class EmployeeController {
             employee.setLastName(lastNameUpd.getText());
             employee.setEmail(emailUpd.getText());
             employee.setBirthDate(birthDateUpd.getValue());
-            employee.setSalary(Double.parseDouble(salaryUpd.getText()));
+            employee.setSalary(new BigDecimal(salaryUpd.getText()));
 
             EmployeeDAO.saveOrUpdateEmployee(employee);
             updateView.setVisible(false);
@@ -126,7 +128,7 @@ public class EmployeeController {
             lastNameUpd.setText(employee.getLastName());
             emailUpd.setText(employee.getEmail());
             birthDateUpd.setValue(LocalDate.parse(employee.getBirthDate().toString()));
-            salaryUpd.setText(Double.toString(employee.getSalary()));
+            salaryUpd.setText(employee.getSalary().toString());
 
             updateView.setVisible(!flag);
             addEmployeeView.setVisible(false);
@@ -161,6 +163,7 @@ public class EmployeeController {
 
     public void backToMain(ActionEvent actionEvent) throws IOException {
         Parent employeeParent = FXMLLoader.load(getClass().getResource("/view/Index.fxml"));
+        employeeParent.getStylesheets().add("/styling/main.css");
         Scene employeeScene = new Scene(employeeParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(employeeScene);

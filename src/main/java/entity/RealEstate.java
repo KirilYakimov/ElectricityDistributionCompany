@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "real_estate")
@@ -20,12 +21,12 @@ public class RealEstate {
     private String email;
 
     @Column(name = "maintenance", nullable = false)
-    private double maintenance;
+    private BigDecimal maintenance;
 
     public RealEstate() {
     }
 
-    public RealEstate(String address, int phone, String email, double maintenance) {
+    public RealEstate(String address, int phone, String email, BigDecimal maintenance) {
         this.address = address;
         this.phone = phone;
         this.email = email;
@@ -64,11 +65,11 @@ public class RealEstate {
         this.email = email;
     }
 
-    public double getMaintenance() {
+    public BigDecimal getMaintenance() {
         return maintenance;
     }
 
-    public void setMaintenance(double maintenance) {
+    public void setMaintenance(BigDecimal maintenance) {
         this.maintenance = maintenance;
     }
 

@@ -1,8 +1,8 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Table(name = "kilowatt_price")
@@ -17,11 +17,11 @@ public class KilowattPrice {
     private LocalDate changedOnDate;
 
     @Column(name = "price")
-    private double price;
+    private BigDecimal price;
 
     public KilowattPrice() {}
 
-    public KilowattPrice(LocalDate changedOnDate, double price) {
+    public KilowattPrice(LocalDate changedOnDate, BigDecimal price) {
         this.changedOnDate = changedOnDate;
         this.price = price;
     }
@@ -42,11 +42,11 @@ public class KilowattPrice {
         this.changedOnDate = changedOnDate;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

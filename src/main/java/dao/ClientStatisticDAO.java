@@ -6,9 +6,11 @@ import entity.ClientStatistic;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ClientStatisticDAO {
+
 
     public static void saveClientStatistic(ClientStatistic clientStatistic) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
@@ -43,20 +45,42 @@ public class ClientStatisticDAO {
         }
     }
 
-    public static double getClientTotalBillsPaid(Client client) {
-        double TotalBillsPaid;
+    public static List<Client> ClientsWhoPaidEqualOrLess(BigDecimal num) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-            TotalBillsPaid = (Double) session.createQuery("SELECT sum(price) FROM Bill WHERE client_id = " + client.getId() + " AND paid = 1").getSingleResult();
+            return session.createNativeQuery(
+                    "SELECT * FROM client " +
+                            "WHERE EXISTS " +
+                            "(SELECT * " +
+                            "FROM bills " +
+                            "WHERE client.id = bills.client_id AND bills.paid = 1 AND bills.price <= "+ num +")", Client.class).getResultList();
+        }
+    }
+
+    public static BigDecimal getClientTotalBillsPaid(Client client) {
+        BigDecimal TotalBillsPaid;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            TotalBillsPaid = (BigDecimal) session.createQuery("SELECT sum(price) FROM Bill WHERE client_id = " + client.getId() + " AND paid = 1").getSingleResult();
         }
         return TotalBillsPaid;
     }
 
-    public static double getClientHighestBillPaid(Client client) {
-        double highestBillPaid;
+    public static BigDecimal getClientHighestBillPaid(Client client) {
+        BigDecimal highestBillPaid;
 
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-            highestBillPaid = (Double) session.createQuery("SELECT max(price) FROM Bill WHERE client_id = " + client.getId() + " AND paid = 1").getSingleResult();
+            highestBillPaid = (BigDecimal) session.createQuery("SELECT max(price) FROM Bill WHERE client_id = " + client.getId() + " AND paid = 1").getSingleResult();
         }
         return highestBillPaid;
+    }
+
+    public static BigDecimal getIncome () {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            return  (BigDecimal) session.createQuery("SELECT sum(price) FROM Bill WHERE paid = 1").getSingleResult();
+        }
+    }
+    public static BigDecimal getExpenses () {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            return  (BigDecimal) session.createQuery("SELECT sum(maintenance) FROM RealEstate").getSingleResult();
+        }
     }
 }

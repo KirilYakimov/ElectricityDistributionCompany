@@ -4,16 +4,16 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #2A293E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeController">
     <children>
         <AnchorPane prefHeight="500.0" prefWidth="555.0">
             <children>
-                <TableView fx:id="employeeListTableView" onMouseClicked="#doubleClickUpd" prefHeight="500.0" prefWidth="555.0">
+                <TableView fx:id="employeeListTableView" onMouseClicked="#doubleClickUpd" prefHeight="506.0" prefWidth="555.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="employeeListTableViewFirstName" prefWidth="110.0" text="First name" />
                         <TableColumn fx:id="employeeListTableViewLastName" prefWidth="110.0" text="Last name" />
